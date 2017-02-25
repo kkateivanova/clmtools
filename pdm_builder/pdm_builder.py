@@ -68,10 +68,7 @@ model['shapeModel']['meanShape'] = meanshape.tolist()
 model['shapeModel']['numEvalues'] = len(eigenValues)
 model['shapeModel']['numPtsPerSample'] = meanshape.shape[0]
 model['shapeModel']['nonRegularizedVectors'] = [0]
-model['hints'] = {}
-model['hints']['leftEye'] = meanshape[27,:].tolist()
-model['hints']['rightEye'] = meanshape[32,:].tolist()
-model['hints']['nose'] = meanshape[62,:].tolist()
+model['hints']['mouth'] = meanshape[8,:].tolist()
 model['path'] = config.path
 
 of = open("model.js","w")

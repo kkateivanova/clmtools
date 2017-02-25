@@ -165,7 +165,7 @@ def build_patches(data, gradient=True, lbp=True, weights=None, optimize_params=F
 			numpy.random.shuffle(arr)
 			from sklearn.grid_search import GridSearchCV
 			from sklearn.metrics import mean_squared_error
-			clfg = GridSearchCV(SVR(kernel="linear"), {'C':[0.1], 'epsilon' : [0.4, 0.3, 0.2, 0.1]}, loss_func=mean_squared_error, verbose=100)
+			clfg = GridSearchCV(SVR(kernel="linear"), {'C':[0.1], 'epsilon' : [0.4, 0.3, 0.2, 0.1]}, scoring='mean_squared_error', verbose=100)
 			clfg.fit(features[arr,:], labels[arr])
 			print clfg.best_params_
 			clf = clfg.best_estimator_
@@ -183,7 +183,7 @@ def build_patches(data, gradient=True, lbp=True, weights=None, optimize_params=F
 
 		if gradient:
 			if optimize_params:
-				clfg = GridSearchCV(SVR(kernel="linear"), {'C':[0.1], 'epsilon' : [0.4, 0.3, 0.2, 0.1]}, loss_func=mean_squared_error, verbose=100)
+				clfg = GridSearchCV(SVR(kernel="linear"), {'C':[0.1], 'epsilon' : [0.4, 0.3, 0.2, 0.1]}, scoring='mean_squared_error', verbose=100)
 				clfg.fit(grad_features[arr,:], labels[arr])
 				print "gradient best params"+str(clfg.best_params_)
 				clf = clfg.best_estimator_
@@ -196,7 +196,7 @@ def build_patches(data, gradient=True, lbp=True, weights=None, optimize_params=F
 			#saveAsImage(clf.coef_, join(data_folder, "svmImages/", "grad"+str(r)+".bmp"))
 		if lbp:
 			if optimize_params:
-				clfg = GridSearchCV(SVR(kernel="linear"), {'C':[0.1], 'epsilon' : [0.4, 0.3, 0.2, 0.1]}, loss_func=mean_squared_error, verbose=100)
+				clfg = GridSearchCV(SVR(kernel="linear"), {'C':[0.1], 'epsilon' : [0.4, 0.3, 0.2, 0.1]}, scoring='mean_squared_error', verbose=100)
 				clfg.fit(lbp_features[arr,:], labels[arr])
 				print "lbp best params"+str(clfg.best_params_)
 				clf = clfg.best_estimator_

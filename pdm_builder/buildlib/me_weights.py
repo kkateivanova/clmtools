@@ -15,7 +15,7 @@ for lines in fi:
 	eyeweights.append(string.join(ewf,".")+".bmp")
 	eyeweights.append(string.join(ewf,".")+"_m.bmp")
 fi.close()
-weights = dict.fromkeys([23,24,25,26,27,28,29,30,31,32,63,64,65,66,67,68,69,70], eyeweights)
+weights = dict.fromkeys([], eyeweights)
 
 mouthweights = []
 fi = open(os.path.join(config.data_folder, "training_hints/", "mouth.csv"),"r")
@@ -24,4 +24,4 @@ for lines in fi:
 	mouthweights.append(string.join(ewf,".")+".bmp")
 	mouthweights.append(string.join(ewf,".")+"_m.bmp")
 fi.close()
-weights.update(dict.fromkeys([44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61], mouthweights))
+weights.update(dict.fromkeys([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17], mouthweights))
